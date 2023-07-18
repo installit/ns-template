@@ -9,13 +9,11 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Install NSIS
+    - name: Install NSIS & Build
       run: |
         iwr -useb get.scoop.sh -outfile 'install.ps1'
         .\install.ps1 -RunAsAdmin
         scoop update
         scoop bucket add extras
         scoop install nsis
-    - name: Build script
         makensis script.nsi
-        
